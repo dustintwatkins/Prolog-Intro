@@ -1,0 +1,51 @@
+2/21
+
+Prolog and Declarative Programming
+  Not telling steps of solving a problem, rather telling facts about the solution
+  Prolog is used in reasoning software
+
+Declarative Programming (Logic Programming)
+  State this is true about the result, not this is how to compute the result
+  Encode a knowledge base
+  Interact w/ knowledge base through queries
+    Then the underlying inference engine will attempt to answer your queries
+    Works by building constructive proofs that your queries are entailed by the knowledge base
+
+Prolog
+  everything is built from TERMS
+  3 kinds of terms
+    constants: integers, real numbers, atoms
+    variables
+    compound terms
+  Prolog language system maintains a collection of facts and rules of inference
+  Prolog program is just a set of rules for this rule base
+  Simplest kind of thing in the rule base is a FACT: a term followed by a '.'
+
+  Knowledge base
+    composed of the facts and rules
+  FACT
+    is_a(socrates, human).
+  RULE
+    This is true, IF this true
+    is_a(x, mortal) :- is_a(x,human).
+    if x is a human, x is a mortal or I know x is mortal if x is human
+  QUERIES based off of the knowledge base
+    > is_a(socrates, mortal). true.
+    > is_a(socrates, human). true.
+    > is_a(Person, human).
+    Person = socrates.
+    >is_a(Person, mortal).
+    Person = socrates.
+
+  Factorial example
+    *Comma's mean AND
+    Knowledge Base
+      Factorial(0,1).
+      Factorial(A,B):-
+        A > 0,
+        C is A-1,
+        Factorial(C,D),
+        B is A*D.
+    QUERIES
+      >Factorial(10, What).
+      What = 3628800
